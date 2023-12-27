@@ -28,7 +28,7 @@ const Navbar = () => {
                 </div>
             </div>
             {/* CENTER NAVBAR */}
-            <div className='flex items-center justify-center w-full bg-red-100 lg:w-fit'>
+            <div className='flex items-center justify-center w-full lg:w-fit'>
                 <Link to="/">
                     <h1 className="text-2xl font-bold text-center cursor-pointer">
                         LAMA
