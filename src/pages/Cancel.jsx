@@ -12,7 +12,7 @@ const Cancel = () => {
     }, [dispatch])
 
     return (
-        <div className='h-screen w-screen bg-[url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")] bg-cover bg-center bg-no-repeat'>
+        <div className='h-screen w-screen bg-[url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")] bg-cover bg-center bg-no-repeat'>
             <div className='flex items-center justify-center w-full h-full bg-white bg-opacity-30'>
                 <div className='flex flex-col items-center justify-center w-4/5 p-5 bg-white sm:w-3/5 lg:w-2/5'>
                     <h1 className='mt-1 text-2xl font-light text-center'> 
