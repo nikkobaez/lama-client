@@ -22,7 +22,6 @@ const Success = () => {
         if (stripeResponse) {
             const createOrder = async () => {
                 try {
-                    console.log("creating order")
                     await axios.post("https://lama-server-1826f3f97416.herokuapp.com/order", {
                         email: stripeResponse.data.customer_details.email,
                         products: cart.products.map(selectProductDetails),
@@ -34,7 +33,6 @@ const Success = () => {
                         "token": `Bearer ${user.accessToken}`,
                         "Content-Type": "application/json",
                     };
-                    console.log("updating cart")
                     await axios.put("https://lama-server-1826f3f97416.herokuapp.com/cart/" + user._id + "/" + cart.id, [], { headers })
                 } catch(error) {
                     console.log(error.message)
