@@ -141,7 +141,7 @@ const Navbar = () => {
                             )
                         }
                         
-                        <ul className="flex flex-col justify-around w-full h-[70vh] gap-6 py-5 overflow-y-scroll">
+                        <ul className={`flex flex-col justify-around w-full ${user ? "h-[70vh]" : "h-[90vh]"} gap-6 py-5 overflow-y-scroll`}>
                             {
                                 !user && (
                                     <>
