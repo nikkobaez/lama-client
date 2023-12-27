@@ -7,6 +7,7 @@ import axios from "axios"
 const Success = () => {
     const [stripeResponse, setStripeResponse] = useState(null)
     const cart = useSelector((state) => state.cart)
+    const user = useSelector((state) => state.user.currentUser)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -16,18 +17,25 @@ const Success = () => {
         return { productid: productid[0], title, color: color[0], size: size[0], quantity }
     }
 
-
+    /* CREATE AN ORDER AND UPDATE CART */
     useEffect(() => {
         if (stripeResponse) {
             const createOrder = async () => {
                 try {
-                    console.log("running order post")
+                    console.log("creating order")
                     await axios.post("https://lama-server-1826f3f97416.herokuapp.com/order", {
                         email: stripeResponse.data.customer_details.email,
                         products: cart.products.map(selectProductDetails),
                         amount: stripeResponse.data.amount_total,
                         address: stripeResponse.data.customer_details.address
                     })
+
+                    const headers = {
+                        "token": `Bearer ${user.accessToken}`,
+                        "Content-Type": "application/json",
+                    };
+                    console.log("updating cart")
+                    await axios.put("https://lama-server-1826f3f97416.herokuapp.com/cart/" + user._id + "/" + cart.id, [], { headers })
                 } catch(error) {
                     console.log(error.message)
                 }
@@ -36,7 +44,7 @@ const Success = () => {
         }
     }, [cart.products, stripeResponse])
 
-    /* CREATE AN ORDER */
+    /* GET STRIPE ORDER ID */
     useEffect(() => {
         const getSession = async () => {
             try {
