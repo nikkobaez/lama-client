@@ -99,7 +99,7 @@ const Navbar = () => {
             {/* SIDE MODAL */}
             {
                 navbar && (
-                    <div className="fixed top-0 right-0 z-30 flex-col w-1/2 h-screen bg-white shadow-2xl">
+                    <div className="fixed top-0 right-0 z-30 flex-col w-3/5 h-screen bg-white shadow-2xl">
                         <div className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setNavbar(false)}>
                             <FaTimes size={20} color="black"/>
                         </div>
