@@ -42,7 +42,7 @@ const Success = () => {
         }
         createOrder()
         }
-    }, [cart.products, stripeResponse])
+    }, [cart.products, stripeResponse, cart.id, user._id, user.accessToken])
 
     /* GET STRIPE ORDER ID */
     useEffect(() => {
