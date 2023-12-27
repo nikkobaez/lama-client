@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline, IoBagHandleOutline } from "react-icons/io5";
 import { removeSessionId, emptyCart } from "../redux/cartRedux";
 import { emptyWishlist } from "../redux/wishlistRedux";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,8 @@ import { logout } from "../redux/userRedux";
     
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
-    const quantity = useSelector((state) => state.cart.quantity)
+    const cartQuantity = useSelector((state) => state.cart.quantity)
+    const wishlistQuantity = useSelector((state) => state.wishlist.quantity)
     const user = useSelector((state) => state.user.currentUser)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -27,7 +28,7 @@ const Navbar = () => {
                 </div>
             </div>
             {/* CENTER NAVBAR */}
-            <div className='flex items-center justify-center w-full lg:max-w-md'>
+            <div className='flex items-center justify-center w-full bg-red-100 lg:w-fit'>
                 <Link to="/">
                     <h1 className="text-2xl font-bold text-center cursor-pointer">
                         LAMA
@@ -69,14 +70,31 @@ const Navbar = () => {
                         }
                     }}>
                         <IoCartOutline size={25} color="black" />
-                        {quantity > 0 && (
+                        {cartQuantity > 0 && (
                             <div className="absolute flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full -right-2 -top-1">
                                 <span className="text-xs font-semibold">
-                                    {quantity}
+                                    {cartQuantity}
                                 </span>
                             </div>
                         )}
                     </div>
+                    <div className="relative cursor-pointer w-fit" onClick={() => {
+                        if (user) {
+                            navigate(`/wishlist/${user._id}`)
+                        } else {
+                            navigate("/login")
+                        }
+                    }}>
+                        <IoBagHandleOutline size={25} color="black" />
+                        {wishlistQuantity > 0 && (
+                            <div className="absolute flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full -right-2 -top-1">
+                                <span className="text-xs font-semibold">
+                                    {wishlistQuantity}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
                 {
                     user && (
                         <button className="px-3 py-2 text-white bg-teal-600 rounded-md" onClick={() => {
@@ -99,55 +117,17 @@ const Navbar = () => {
             {/* SIDE MODAL */}
             {
                 navbar && (
-                    <div className="fixed top-0 right-0 z-30 flex-col w-3/5 h-screen bg-white shadow-2xl">
+                    <div className="fixed top-0 right-0 z-30 w-3/5 h-screen bg-white shadow-2xl">
                         <div className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setNavbar(false)}>
                             <FaTimes size={20} color="black"/>
                         </div>
-                        <div className="flex flex-wrap items-center justify-center w-full h-16 px-5 my-8 md:justify-between">
-                            {
-                                user ? 
-                                    (
-                                        <>
-                                            <p className="my-3 text-center">
-                                                Welcome back, {user.username}
-                                            </p>
-                                        </>
-                                    )
-                                :
-                                    (
-                                        <div className="flex gap-6">
-                                            <Link to="/register">
-                                                <p className="cursor-pointer text-md sm:text-lg">
-                                                    REGISTER
-                                                </p>
-                                            </Link>
-                                            <Link to="/login">
-                                                <p className="cursor-pointer text-md sm:text-lg">
-                                                    SIGN IN
-                                                </p>
-                                            </Link>
-                                        </div>
-                                    )
-                            }
-                            <div className="flex items-center gap-6">
-                                <div className="relative ml-3 cursor-pointer w-fit" onClick={() => {
-                                    if (user) {
-                                        navigate(`/cart/${user._id}`)
-                                    } else {
-                                        navigate("/login")
-                                    }
-                                }}>
-                                    <IoCartOutline size={25} color="black" />
-                                    {quantity > 0 && (
-                                        <div className="absolute flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full -right-2 -top-1">
-                                            <span className="text-xs font-semibold">
-                                                {quantity}
-                                            </span>
-                                        </div>
-                                    )}
-                                </div>
-                                {
-                                    user && (
+                        {
+                            user && (
+                                <div className="w-full p-0 sm:px-5 sm:pt-5 bg-lime-50">
+                                    <div className="flex flex-col items-center justify-center gap-1 mt-8 sm:mt-0 sm:gap-6 sm:flex-row">
+                                        <p className="my-3 text-center">
+                                            Welcome back, {user.username}
+                                        </p>
                                         <button className="px-3 py-2 text-white bg-teal-600 rounded-md" onClick={() => {
                                             dispatch(logout())
                                             dispatch(emptyCart())
@@ -156,21 +136,68 @@ const Navbar = () => {
                                         }}>
                                             Logout
                                         </button>
-                                    )
+                                    </div>
+                                </div>
+                            )
+                        }
+                        
+                        <ul className="flex flex-col justify-around w-full h-[70vh] gap-6 py-5 overflow-y-scroll bg-red-100">
+                            {
+                                !user && (
+                                    <>
+                                        <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/register")}>
+                                            Register
+                                        </li>
+                                        <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/login")}>
+                                            Sign In
+                                        </li>
+                                    </>
+                                )
+                            }
+                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/")}> 
+                                Home 
+                            </li>
+                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/products")}> 
+                                Products 
+                            </li>
+                            <li className="flex items-center justify-center pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => {
+                                if (user) {
+                                    navigate(`/cart/${user._id}`)
+                                } else {
+                                    navigate("/login")
                                 }
-                            </div>
-                        </div>
-                        <ul className="flex flex-col w-full h-full gap-8 p-0 m-0 overflow-y-scroll list-none">
-                            <li className="pb-3 mt-5 text-center cursor-pointer text-md sm:text-lg">Home</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Cart</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Men's Fashion</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Women's Fashion</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Accessories</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">My Account</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Order Tracking</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Wishlist</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Privacy Policy</li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg">Terms of Conditions</li>
+                            }}> 
+                                <div className="relative w-fit">
+                                    <p> Cart </p>
+                                    {cartQuantity > 0 && (
+                                        <div className="absolute flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full -right-3 -top-1">
+                                            <span className="text-xs font-semibold">
+                                                {cartQuantity}
+                                            </span>
+                                        </div>
+                                    )}
+                                </div> 
+                            </li>
+                            <li className="flex items-center justify-center pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => {
+                                if (user) {
+                                    navigate(`/wishlist/${user._id}`)
+                                } else {
+                                    navigate("/login")
+                                }
+                            }}> 
+                                <div className="relative w-fit">
+                                    <p> Wishlist </p>
+                                    {wishlistQuantity > 0 && (
+                                        <div className="absolute flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full -right-3 -top-1">
+                                            <span className="text-xs font-semibold">
+                                                {wishlistQuantity}
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+                            </li>
+                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg"> Privacy Policy </li>
+                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg"> Terms of Conditions </li>
                         </ul>
                     </div>
                 )
