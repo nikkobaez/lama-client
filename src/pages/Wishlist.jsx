@@ -79,7 +79,7 @@ const Wishlist = () => {
             <Navbar />
                 <div className="p-5">
                     <h1 className='text-3xl text-center font-extralight'> 
-                        YOUR CART 
+                        YOUR WISHLIST 
                     </h1>
                     {/* TOP CONTAINER */}
                     <div className='flex items-center justify-between my-10 sm:my-5'>
