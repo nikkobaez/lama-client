@@ -1,8 +1,13 @@
 import { FaFacebook, FaInstagramSquare, FaTwitter, FaPinterest, FaMap, FaPhoneAlt,  } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { PaymentIcon } from 'react-svg-credit-card-payment-icons';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"
 
 const Footer = () => {
+    const user = useSelector((state) => state.user.currentUser)
+    const navigate = useNavigate()
+
     return (
         <div className='flex flex-col lg:flex-row'>
             {/* LEFT */}
@@ -35,14 +40,42 @@ const Footer = () => {
                     Useful Links
                 </h3>
                 <ul className="flex flex-wrap p-0 m-0 list-none">
-                    <li className="w-1/2 pb-3 cursor-pointer">Home</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Cart</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Men's Fashion</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Women's Fashion</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Accessories</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">My Account</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Order Tracking</li>
-                    <li className="w-1/2 pb-3 cursor-pointer">Wishlist</li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/")}>
+                        Home
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/products")}>
+                        Products
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/products/shirts")}>
+                        Shirts
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/products/pants")}>
+                        Pants
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/products/coats")}>
+                        Coats
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => navigate("/products/bags")}>
+                        Bags
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => {
+                        if (user) {
+                            navigate(`/cart/${user._id}`)
+                        } else {
+                            navigate("/login")
+                        }
+                    }}>
+                        Cart
+                    </li>
+                    <li className="w-1/2 pb-3 cursor-pointer" onClick={() => {
+                        if (user) {
+                            navigate(`/wishlist/${user._id}`)
+                        } else {
+                            navigate("/login")
+                        }
+                    }}>
+                        Wishlist
+                    </li>
                     <li className="w-1/2 pb-3 cursor-pointer">Privacy Policy</li>
                     <li className="w-1/2 pb-3 cursor-pointer">Terms of Conditions</li>
                 </ul>

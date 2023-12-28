@@ -117,13 +117,13 @@ const Navbar = () => {
             {/* SIDE MODAL */}
             {
                 navbar && (
-                    <div className="fixed top-0 right-0 z-30 w-3/5 h-screen bg-white shadow-2xl">
+                    <div className="fixed top-0 right-0 z-30 w-3/5 h-screen overflow-y-scroll bg-white shadow-2xl">
                         <div className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setNavbar(false)}>
                             <FaTimes size={20} color="black"/>
                         </div>
                         {
                             user && (
-                                <div className="w-full p-0 sm:px-5 sm:pt-5">
+                                <div className="w-full h-24 p-0 sm:px-5 sm:pt-5">
                                     <div className="flex flex-col items-center justify-center gap-1 mt-8 sm:mt-0 sm:gap-6 sm:flex-row">
                                         <p className="my-3 text-center">
                                             Welcome back, {user.username}
@@ -141,11 +141,11 @@ const Navbar = () => {
                             )
                         }
                         
-                        <ul className={`flex flex-col justify-around w-full ${user ? "h-[70vh]" : "h-[90vh]"} gap-6 py-5 overflow-y-scroll`}>
+                        <ul className="flex flex-col w-full gap-8 bg-emerald-200">
                             {
                                 !user && (
                                     <>
-                                        <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/register")}>
+                                        <li className="pb-3 mt-10 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/register")}>
                                             Register
                                         </li>
                                         <li className="pb-3 text-center cursor-pointer text-md sm:text-lg" onClick={() => navigate("/login")}>
@@ -197,7 +197,7 @@ const Navbar = () => {
                                 </div>
                             </li>
                             <li className="pb-3 text-center cursor-pointer text-md sm:text-lg"> Privacy Policy </li>
-                            <li className="pb-3 text-center cursor-pointer text-md sm:text-lg"> Terms of Conditions </li>
+                            <li className="pb-3 mb-10 text-center cursor-pointer text-md sm:text-lg"> Terms of Conditions </li>
                         </ul>
                     </div>
                 )
