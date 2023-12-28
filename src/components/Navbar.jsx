@@ -123,8 +123,8 @@ const Navbar = () => {
                         </div>
                         {
                             user && (
-                                <div className="w-full h-24 p-0 sm:px-5 sm:pt-5">
-                                    <div className="flex flex-col items-center justify-center gap-1 my-8 sm:my-0 sm:gap-6 sm:flex-row">
+                                <div className="w-full h-24 p-0 mb-8 sm:px-5 sm:pt-5 sm:mb-0">
+                                    <div className="flex flex-col items-center justify-center gap-1 mt-8 sm:mt-0 sm:gap-6 sm:flex-row">
                                         <p className="my-3 text-center">
                                             Welcome back, {user.username}
                                         </p>
