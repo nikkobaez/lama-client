@@ -124,7 +124,7 @@ const Navbar = () => {
                         {
                             user && (
                                 <div className="w-full h-24 p-0 sm:px-5 sm:pt-5">
-                                    <div className="flex flex-col items-center justify-center gap-1 mt-8 sm:mt-0 sm:gap-6 sm:flex-row">
+                                    <div className="flex flex-col items-center justify-center gap-1 my-8 sm:my-0 sm:gap-6 sm:flex-row">
                                         <p className="my-3 text-center">
                                             Welcome back, {user.username}
                                         </p>
@@ -141,7 +141,7 @@ const Navbar = () => {
                             )
                         }
                         
-                        <ul className="flex flex-col w-full gap-8 bg-emerald-200">
+                        <ul className="flex flex-col w-full gap-8">
                             {
                                 !user && (
                                     <>
