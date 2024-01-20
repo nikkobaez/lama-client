@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../redux/userRedux";
-import { emptyCart } from "../redux/cartRedux";
-import { emptyWishlist, setWishlist } from "../redux/wishlistRedux";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromWishList } from "../redux/wishlistRedux";
-import Announcement from "../components/Announcement"
-import Navbar from "../components/Navbar"
+import { emptyCart } from "../redux/cartRedux";
+import { logout } from "../redux/userRedux";
+import { emptyWishlist, setWishlist, removeFromWishList } from "../redux/wishlistRedux";
+import { Announcement, Navbar, Footer } from "../components"
 import axios from "axios";
-import Footer from "../components/Footer";
 
 
 const Wishlist = () => {

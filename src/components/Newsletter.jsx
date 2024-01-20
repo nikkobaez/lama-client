@@ -1,4 +1,4 @@
-import { IoSend } from "react-icons/io5";
+import { IoSend } from "../assets";
 
 const Newsletter = () => {
     return (

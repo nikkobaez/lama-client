@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Product from "./Product"
+import { Product } from "../components"
 import axios from "axios";
 
 const Products = ({category, filter, sort}) => {

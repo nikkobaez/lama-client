@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { removeSessionId } from "../redux/cartRedux"
 import { useDispatch } from "react-redux"
+import { removeSessionId } from "../redux/cartRedux"
 
 const Cancel = () => {
     const navigate = useNavigate()

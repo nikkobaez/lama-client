@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom"
-import { logout } from "../redux/userRedux";
-import { FaPlus, FaMinus } from "react-icons/fa"
-import { emptyCart, addToCart } from "../redux/cartRedux";
-import { emptyWishlist } from "../redux/wishlistRedux";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from '../components/Navbar'
-import Announcement from '../components/Announcement'
-import Newsletter from '../components/Newsletter'
-import Footer from '../components/Footer'
+import { emptyCart, addToCart } from "../redux/cartRedux";
+import { logout } from "../redux/userRedux";
+import { emptyWishlist } from "../redux/wishlistRedux";
+import { FaPlus, FaMinus } from "../assets"
+import { Navbar, Announcement, Newsletter, Footer } from "../components"
 import axios from "axios"
 
 const Product = () => {

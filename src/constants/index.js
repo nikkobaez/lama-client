@@ -1,4 +1,4 @@
-export const sliderItems = [
+const sliderItems = [
     {
       id: 1,
       img: "https://firebasestorage.googleapis.com/v0/b/lama-cf129.appspot.com/o/slides%2Fwomen-flowy-dress.png?alt=media&token=82799fdf-de6b-447a-a1b4-b74d8035e7a4",
@@ -22,7 +22,7 @@ export const sliderItems = [
     },
   ];
 
-  export const categories = [
+const categories = [
     {
       id: 1,
       img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -42,3 +42,8 @@ export const sliderItems = [
       category: "coats",
     },
   ];
+
+  export {
+    sliderItems, 
+    categories
+  }

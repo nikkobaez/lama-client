@@ -1,10 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router"
-import Annoucement from '../components/Announcement'
-import Newsletter from '../components/Newsletter'
-import Products from '../components/Products'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import { Announcement, Newsletter, Products, Footer, Navbar } from "../components"
 
 const ProductsList = () => {
     // GET CATEGORY FROM URL
@@ -29,7 +25,7 @@ const ProductsList = () => {
 
     return (
         <div>
-            <Annoucement />
+            <Announcement />
             <Navbar />
             <h1 className='m-5 text-3xl font-bold'>
                 {category ? "All " + category.charAt(0).toUpperCase() + category.slice(1) : "All Products"}

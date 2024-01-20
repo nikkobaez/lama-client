@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { setCart } from "../redux/cartRedux";
-import { setWishlist } from "../redux/wishlistRedux";
 import { useDispatch } from 'react-redux'
+import { setCart } from "../redux/cartRedux";
 import { loginStart, loginSuccess } from '../redux/userRedux'
+import { setWishlist } from "../redux/wishlistRedux";
 import axios from 'axios'
 
 const Login = () => {

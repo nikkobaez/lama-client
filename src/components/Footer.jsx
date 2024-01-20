@@ -1,6 +1,4 @@
-import { FaFacebook, FaInstagramSquare, FaTwitter, FaPinterest, FaMap, FaPhoneAlt,  } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
-import { PaymentIcon } from 'react-svg-credit-card-payment-icons';
+import { FaFacebook, FaInstagramSquare, FaTwitter, FaPinterest, FaMap, FaPhoneAlt, IoMdMail, PaymentIcon } from "../assets"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux"
 

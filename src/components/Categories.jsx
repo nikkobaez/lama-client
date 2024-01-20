@@ -1,5 +1,5 @@
-import { categories } from "../data"
-import Category from "./Category"
+import { Category } from "../components"
+import { categories } from "../constants"
 
 const Categories = () => {
     return (

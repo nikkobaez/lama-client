@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaRegHeart, FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCart } from "../redux/cartRedux";
 import { logout } from "../redux/userRedux";
 import { emptyWishlist, addToWishlist, removeFromWishList } from "../redux/wishlistRedux";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { FaSearch, FaRegHeart, FaHeart } from "../assets";
 import axios from "axios";
-import { emptyCart } from "../redux/cartRedux";
 
 const Product = ({item}) => {
     const [favorite, setFavorite] = useState(false)

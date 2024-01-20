@@ -1,16 +1,14 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addSessionId, emptyCart, setCart, addProduct, removeProduct } from "../redux/cartRedux";
 import { logout } from "../redux/userRedux";
 import { emptyWishlist } from "../redux/wishlistRedux";
-import { addSessionId, emptyCart, setCart, addProduct, removeProduct } from "../redux/cartRedux";
-import { useDispatch, useSelector } from "react-redux";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "../assets";
+import { Announcement, Navbar, Footer } from "../components"
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import uuid from "react-uuid"
-import Announcement from '../components/Announcement'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart)

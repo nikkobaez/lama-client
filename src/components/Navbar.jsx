@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
-import { IoCartOutline, IoBagHandleOutline } from "react-icons/io5";
-import { removeSessionId, emptyCart } from "../redux/cartRedux";
-import { emptyWishlist } from "../redux/wishlistRedux";
 import { useDispatch, useSelector } from "react-redux";
+import { removeSessionId, emptyCart } from "../redux/cartRedux";
 import { logout } from "../redux/userRedux";
+import { emptyWishlist } from "../redux/wishlistRedux";
+import { FaSearch, FaBars, FaTimes, IoCartOutline, IoBagHandleOutline } from "../assets"
+
     
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);

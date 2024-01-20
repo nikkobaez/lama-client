@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
-import { sliderItems } from '../data'
+import { FaChevronLeft, FaChevronRight } from "../assets"
+import { sliderItems } from '../constants'
 
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
