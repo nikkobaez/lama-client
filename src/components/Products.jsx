@@ -10,7 +10,7 @@ const Products = ({category, filter, sort}) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get(category ? `https://lama-server-1826f3f97416.herokuapp.com/products?category=${category}` : "https://lama-server-1826f3f97416.herokuapp.com/products");
+                const res = await axios.get(category ? `https://lama-server-21cab258b799.herokuapp.com/products?category=${category}` : "https://lama-server-21cab258b799.herokuapp.com/products");
                 setProducts(res.data)
             } catch (error) {
                 console.log(error.message)

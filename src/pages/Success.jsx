@@ -22,7 +22,7 @@ const Success = () => {
         if (stripeResponse) {
             const createOrder = async () => {
                 try {
-                    await axios.post("https://lama-server-1826f3f97416.herokuapp.com/order", {
+                    await axios.post("https://lama-server-21cab258b799.herokuapp.com/order", {
                         email: stripeResponse.data.customer_details.email,
                         products: cart.products.map(selectProductDetails),
                         amount: stripeResponse.data.amount_total,
@@ -33,7 +33,7 @@ const Success = () => {
                         "token": `Bearer ${user.accessToken}`,
                         "Content-Type": "application/json",
                     };
-                    await axios.put("https://lama-server-1826f3f97416.herokuapp.com/cart/" + user._id + "/" + cart.id, [], { headers })
+                    await axios.put("https://lama-server-21cab258b799.herokuapp.com/cart/" + user._id + "/" + cart.id, [], { headers })
                 } catch(error) {
                     console.log(error.message)
                 }
@@ -46,7 +46,7 @@ const Success = () => {
     useEffect(() => {
         const getSession = async () => {
             try {
-                const res = await axios.post("https://lama-server-1826f3f97416.herokuapp.com/stripe/retrieve-checkout-session", {
+                const res = await axios.post("https://lama-server-21cab258b799.herokuapp.com/stripe/retrieve-checkout-session", {
                     sessionId: cart.sessionId
                 })
                 setStripeResponse(res)

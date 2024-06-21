@@ -33,20 +33,20 @@ const Register = () => {
 
         try {
             /* REGISTER A NEW USER */
-            const res = await axios.post("https://lama-server-1826f3f97416.herokuapp.com/auth/register", {
+            const res = await axios.post("https://lama-server-21cab258b799.herokuapp.com/auth/register", {
                 username: username,
                 email: email,
                 password: password
             })
 
             /* CREATE A CART */
-            await axios.post("https://lama-server-1826f3f97416.herokuapp.com/cart", {
+            await axios.post("https://lama-server-21cab258b799.herokuapp.com/cart", {
                 userid: res.data._id,
                 products: [],
             })
 
             /* CREATE A WISHLIST */
-            await axios.post("https://lama-server-1826f3f97416.herokuapp.com/wishlist", {
+            await axios.post("https://lama-server-21cab258b799.herokuapp.com/wishlist", {
                 userid: res.data._id,
                 products: [],
             })

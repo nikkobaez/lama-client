@@ -26,7 +26,7 @@ const Wishlist = () => {
 
             const updateWishlist = async () => {
                 try {
-                    await axios.put("https://lama-server-1826f3f97416.herokuapp.com/wishlist/" + user._id + "/" + wishlist.id, wishlist.products, { headers })
+                    await axios.put("https://lama-server-21cab258b799.herokuapp.com/wishlist/" + user._id + "/" + wishlist.id, wishlist.products, { headers })
                 } catch (error) {   
                     if (error.response.status === 401) {
                         dispatch(logout())
@@ -53,7 +53,7 @@ const Wishlist = () => {
 
         const getWishlist = async () => {
             try {
-                const res = await axios.get("https://lama-server-1826f3f97416.herokuapp.com/wishlist/find/" + user._id, { headers })
+                const res = await axios.get("https://lama-server-21cab258b799.herokuapp.com/wishlist/find/" + user._id, { headers })
                 dispatch(setWishlist(res.data))
             } catch (error) {
                 if (error.response.status === 401) {

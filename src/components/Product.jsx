@@ -24,7 +24,7 @@ const Product = ({item}) => {
 
             const updateWishlist = async () => {
                 try {
-                    await axios.put("https://lama-server-1826f3f97416.herokuapp.com/wishlist/" + user._id + "/" + wishlist.id, wishlist.products, { headers })
+                    await axios.put("https://lama-server-21cab258b799.herokuapp.com/wishlist/" + user._id + "/" + wishlist.id, wishlist.products, { headers })
                 } catch (error) {   
                     if (error.response.status === 401) {
                         dispatch(logout())

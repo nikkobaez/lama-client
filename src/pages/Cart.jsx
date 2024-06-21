@@ -27,7 +27,7 @@ const Cart = () => {
 
         const updateCart = async () => {
             try {
-                await axios.put("https://lama-server-1826f3f97416.herokuapp.com/cart/" + user._id + "/" + cart.id, cart.products, { headers })
+                await axios.put("https://lama-server-21cab258b799.herokuapp.com/cart/" + user._id + "/" + cart.id, cart.products, { headers })
             } catch (error) { 
                 if (error.response.status === 401) {
                     dispatch(logout())
@@ -51,7 +51,7 @@ const Cart = () => {
 
         const getCart = async () => {
             try {
-                const res = await axios.get("https://lama-server-1826f3f97416.herokuapp.com/cart/find/" + user._id, { headers })
+                const res = await axios.get("https://lama-server-21cab258b799.herokuapp.com/cart/find/" + user._id, { headers })
                 dispatch(setCart(res.data))
             } catch (error) {
                 if (error.response.status === 401) {
@@ -76,7 +76,7 @@ const Cart = () => {
     /* CHECKOUT WITH STRIPE */
     const handleCheckOut = async () => {
         try {
-            const res = await axios.post("https://lama-server-1826f3f97416.herokuapp.com/stripe/create-checkout-session", {
+            const res = await axios.post("https://lama-server-21cab258b799.herokuapp.com/stripe/create-checkout-session", {
                 customerEmail: user.email,
                 lineItems: cart.products.map(selectProductIdandQuantity),
                 mode: "payment",
