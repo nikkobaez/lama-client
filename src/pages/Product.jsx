@@ -47,7 +47,7 @@ const Product = () => {
 
             const updateCart = async () => {
                 try {
-                    await axios.put("https://lama-server-21cab258b799.herokuapp.com/cart/" + user._id + "/" + cart.id, cart.products, { headers })
+                    await axios.put("https://lama-server-4377078eb805.herokuapp.com/cart/" + user._id + "/" + cart.id, cart.products, { headers })
                 } catch (error) {
                     if (error.response.status === 401) {
                         dispatch(logout())
@@ -67,7 +67,7 @@ const Product = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get("https://lama-server-21cab258b799.herokuapp.com/products/find/" + id)
+                const res = await axios.get("https://lama-server-4377078eb805.herokuapp.com/products/find/" + id)
                 setProduct(res.data)
                 setColor(res.data.color[0])
                 setSize(res.data.size[0])

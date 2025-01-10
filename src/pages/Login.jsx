@@ -19,7 +19,7 @@ const Login = () => {
         dispatch(loginStart())
 
         try {
-            const userRes = await axios.post("https://lama-server-21cab258b799.herokuapp.com/auth/login", {
+            const userRes = await axios.post("https://lama-server-4377078eb805.herokuapp.com/auth/login", {
                 email: email,
                 password: password
             });
@@ -32,10 +32,10 @@ const Login = () => {
                 "Content-Type": "application/json",
             };
 
-            const cartRes = await axios.get("https://lama-server-21cab258b799.herokuapp.com/cart/find/" + userRes.data._id, { headers })
+            const cartRes = await axios.get("https://lama-server-4377078eb805.herokuapp.com/cart/find/" + userRes.data._id, { headers })
             dispatch(setCart(cartRes.data))
 
-            const wishlistRes = await axios.get("https://lama-server-21cab258b799.herokuapp.com/wishlist/find/" + userRes.data._id, { headers })
+            const wishlistRes = await axios.get("https://lama-server-4377078eb805.herokuapp.com/wishlist/find/" + userRes.data._id, { headers })
             dispatch(setWishlist(wishlistRes.data))
 
             navigate("/")
